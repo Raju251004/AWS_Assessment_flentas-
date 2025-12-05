@@ -1,0 +1,16 @@
+Design and configure a basic AWS network with:
+1 VPC
+2 Public Subnets
+2 Private Subnets
+Internet Gateway (IGW) attached
+NAT Gateway configured for private subnet outbound access
+VPC is uesd to creat control over the virtual networking environment.
+The VPC was designed using the CIDR block 10.0.0.0/16, which gives a large IP range and flexibility for future expansion. 
+Inside this VPC I created a total of four subnets—two public and two private—to separate resources based on their access needs. 
+The public subnets 10.0.1.0/24 and 10.0.2.0/24)were created for resources that require direct internet connectivity
+such as load balancers or NAT gateways. These subnets were configured with Auto-assign Public IP enabled and their route tables point to the Internet Gateway (IGW).
+The private subnets 10.0.3.0/24 for development and 10.0.4.0/24 for testing were designed for internal resources that should not be publicly exposed. 
+These subnets do not have direct internet access. 
+Instead, their outbound traffic is routed through a NAT Gateway placed in one of the public subnets. 
+This allows instances in the private subnets to download updates or access external services securely without exposing them to the internet.
+The separation of development and testing environments ensures better control, security, and management of internal workloads.
